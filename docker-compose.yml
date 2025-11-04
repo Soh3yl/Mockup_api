@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  # --- Django Web Service ---
+  web:
+    build: .
+    container_name: customic_web
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./media:/app/media
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  # --- Celery Worker ---
+  celery:
+    build: .
+    container_name: customic_celery
+    command: celery -A core worker -l info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  # --- Redis Broker ---
+  redis:
+    image: redis:7-alpine
+    container_name: customic_redis
+    ports:
+      - "6379:6379"

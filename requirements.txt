@@ -1,0 +1,9 @@
+Django>=4.2
+djangorestframework
+djangorestframework-simplejwt
+Pillow
+celery
+redis
+drf-spectacular
+drf-spectacular[sidecar]
+gunicorn
