@@ -2,7 +2,7 @@
 
 ## 📖 Description
 
-**Mockup API** یک پروژه‌ی بک‌اند نوشته‌شده با **Django REST Framework + Celery + Redis** است  
+این پروژه یک پروژه‌ی بک‌اند نوشته‌شده با **Django REST Framework + Celery + Redis** است  
 که به کاربر اجازه می‌دهد متن دلخواه خود را روی تصاویر تی‌شرت با رنگ‌های مختلف چاپ کند 🎨  
 
 این پروژه شامل احراز هویت JWT، پردازش پس‌زمینه با Celery، و مستندسازی کامل با Swagger است.  
@@ -35,7 +35,7 @@
 
 ### 1. اطمینان از نصب Docker و Docker Compose
 
-### 2. در مسیر ریشه پروژه (`Customic_task/`) اجرا کنید:
+### 2. در مسیر ریشه پروژه (`/`) اجرا کنید:
 
 ```bash
 docker-compose up --build
@@ -46,13 +46,7 @@ docker-compose up --build
 - **Django:** http://127.0.0.1:8000
 - **Swagger Docs:** http://127.0.0.1:8000/api/docs/swagger/
 
-### 3. ساخت superuser:
-
-```bash
-docker exec -it customic_web python manage.py createsuperuser
-```
-
-### 4. توقف پروژه:
+### 3. توقف پروژه:
 
 ```bash
 docker-compose down
@@ -121,7 +115,7 @@ POST /api/v1/mockups/generate/
 Content-Type: application/json
 
 {
-  "text": "Customic Demo",
+  "text": "This is Demo",
   "font": "vazir",
   "text_color": "#FF0000",
   "shirt_color": ["white", "black"]
@@ -154,16 +148,3 @@ Content-Type: application/json
 
 - برای دسترسی به Admin Panel: http://127.0.0.1:8000/admin/
 - فایل‌های تولید شده در پوشه `media/mockups/` ذخیره می‌شوند
-- برای مشاهده لاگ‌های Celery: `docker logs -f customic_celery`
-
----
-
-## 🤝 مشارکت
-
-برای گزارش باگ یا پیشنهاد ویژگی جدید، لطفاً Issue باز کنید.
-
----
-
-## 📄 لایسنس
-
-این پروژه تحت لایسنس MIT منتشر شده است.
